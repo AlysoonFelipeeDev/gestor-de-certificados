@@ -1,0 +1,17 @@
+@use "sass:map";
+
+@function color($name) {
+    @if not map.has-key($colors, $name){
+        @warn "A cor '#{$name}' não foi encontrada no mapa $colors.";
+        @return null;
+    }
+    @return map.get($colors, $name)
+};
+
+@function space($size) {
+    @if not map.has-key($spacings , $size ) {
+        @warn "O tamanho '#{$size}' nao foi encontrado no mapa $spacings";
+        @return null;
+    }
+    @return map.get($spacings, $size)
+}
