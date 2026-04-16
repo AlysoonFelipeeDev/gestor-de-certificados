@@ -1,0 +1,15 @@
+@mixin flex($direction: null, $justify: null, $align: null, $gap: null, $flex: null) {
+    display: flex;
+    @if $direction { flex-direction: $direction;}
+    @if $justify { justify-content: $justify; }
+    @if $align { align-items: $align;}
+    @if $gap { gap: $gap;}
+    @if $flex {flex: $flex;}
+
+}
+
+@mixin grid ($cols, $gap: space(2xs)) {
+    display: grid;
+    grid-template-columns: repeat($cols, minmax(0, 1fr));
+    gap: $gap;
+}
