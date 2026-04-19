@@ -1,0 +1,15 @@
+@use '../../styles/abstracts/' as *;
+
+.app-layout {
+    @include flex($direction: column, $gap: space(xs) );
+    min-height: 100vh;
+    width: 100%;
+    padding: 0 0 space(3xl);
+    background: #0a0f18;
+}
+
+.app-section {
+    width: 100%;
+    padding: space(sm);
+    margin: space(4xl) 0 ;
+}
