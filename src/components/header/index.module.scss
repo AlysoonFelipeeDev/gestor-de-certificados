@@ -1,0 +1,27 @@
+@use '../../styles/abstracts/' as *;
+
+.topbar {
+    @include flex($justify: space-between, $align: center);
+    background: color(secondary);
+    margin-bottom: space(sm);
+    padding: 0 space(lg);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3rem;
+    z-index: 30;
+
+    &__icon-button {
+        background: transparent;
+        border: 0;
+        color: color(text);
+        font-size: font-size(md);
+        cursor: pointer;
+    }
+
+    &__title {
+        font-size: font-size(lg);
+        font-weight: 700;
+    }
+}
