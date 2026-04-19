@@ -12,6 +12,7 @@
     z-index: 30;
 
     &__item {
+        @include flex($justify: center, $align: center);
         border: 0;
         background: transparent;
         color: color(title);
