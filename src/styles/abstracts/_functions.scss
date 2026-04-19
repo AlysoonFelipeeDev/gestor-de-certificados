@@ -1,17 +1,22 @@
+@use './tokens' as *;
 @use "sass:map";
 
-@function color($name) {
-    @if not map.has-key($colors, $name){
-        @warn "A cor '#{$name}' não foi encontrada no mapa $colors.";
+@function get-token($name, $map, $name-map) {
+    @if not map.has-key($map, $name) {
+        @warn "A cor/tamanho '#{$name}' nao foi encontrado no mapa '#{$name-map}'";
         @return null;
     }
-    @return map.get($colors, $name)
+    @return map.get($map, $name)
+};
+
+@function color($name) {
+    @return get-token($name, $colors, color)
 };
 
 @function space($size) {
-    @if not map.has-key($spacings , $size ) {
-        @warn "O tamanho '#{$size}' nao foi encontrado no mapa $spacings";
-        @return null;
-    }
-    @return map.get($spacings, $size)
-}
+    @return get-token($size, $spacings, space)
+};
+
+@function font-size($size) {
+    @return get-token($size, $font-sizes, font-size)
+};
