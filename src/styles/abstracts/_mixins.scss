@@ -8,8 +8,8 @@
 
 }
 
-@mixin grid ($cols, $gap: space(2xs)) {
+@mixin grid ($cols, $gap: null) {
     display: grid;
     grid-template-columns: repeat($cols, minmax(0, 1fr));
-    gap: $gap;
+    @if $gap { gap: $gap;}
 }
