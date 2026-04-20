@@ -88,7 +88,8 @@
     }
 
     &__actions {
-        @include grid(4, $gap: space(2xs));
+        @include grid(3, $gap: space(2xs));
+        width: 50%;
     }
     
     &__button {
