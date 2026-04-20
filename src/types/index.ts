@@ -12,3 +12,11 @@ interface SalesCertificates {
     returnedCertificates: number
 }
 
+type establishmentVisit = Pick<Establishment, 'totalCertificates' | 'name' > & {
+    id: string,
+    sold: number,
+    returned: number,
+    commissionClient: number,
+    valueTotalPaidClient: number
+    statusCard: 'open'| 'closed'
+}
