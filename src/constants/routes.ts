@@ -1,7 +1,9 @@
-import { Route } from "@/types/routes";
+import { NavigationRoute} from "@/types/routes";
 
-export const routes: Route[] = [
+export const navigationRoutes: NavigationRoute[] = [
     {label: 'Rota Ativa', route: '/rota'},
     {label: 'Painel', route: '/'},
-    {label: 'Config', route: '/config'} 
+    {label: 'Configurações', route: '/configuracoes'} 
 ]
+
+
