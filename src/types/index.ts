@@ -1,18 +1,18 @@
-interface Establishment {
+export interface Establishment {
     id: string,
     name: string,
     responsible: string,
     totalCertificates: number
 }
 
-interface SalesCertificates {
+export interface SalesCertificates {
     id: string,
     establishmentId: string,
     soldCertificates: number,
     returnedCertificates: number
 }
 
-type establishmentVisit = Pick<Establishment, 'totalCertificates' | 'name' > & {
+export type EstablishmentVisit = Pick<Establishment, 'totalCertificates' | 'name' > & {
     id: string,
     sold: number,
     returned: number,
