@@ -18,11 +18,14 @@ export function ClientCard({visit, updateSales, onClose, openCard} : ClientCardP
 
 
     return (
-            <article className={`${styles['client-card']} ${styles[isOpen ? 'client-card--open' : 'client-card--closed' ]}`}>
+            <article 
+                className={`${styles['client-card']} ${styles[isOpen ? 'client-card--open' : 'client-card--closed' ]}`}
+                onClick={() => !isOpen && openCard(visit.id)}
+            >
                 <header className={styles['client-card__header']}>
                     <p className={styles['client-card__name']}>{visit.name}</p>
                     {isOpen 
-                        ? <button className={styles['client-card__add-button']} type="button" aria-label="Adicionar venda">+</button>
+                        ? <button className={styles['client-card__add-button']} type="button" aria-label="Fechar visita" onClick={() => onClose(visit.id)}>+</button>
                         : <span className={styles['client-card__badge']}>visitado</span>
                     }
                 </header>
