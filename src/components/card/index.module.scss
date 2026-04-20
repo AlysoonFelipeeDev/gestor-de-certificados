@@ -1,0 +1,108 @@
+@use '../../styles/abstracts/' as *;
+
+.client-card {
+    border-radius: space(xs);
+    padding: space(xs);
+    
+    &__header {
+        @include flex($justify: space-between, $align: center, $gap: space(2xs));
+    }
+
+    &__name {
+        font-size: font-size(md);
+        font-weight: 600;
+    }
+
+    
+    &__badge {
+        font-size: font-size(xs);
+        color: color(success);
+        border: 1px solid color-mix(in srgb, color(success) 45%, transparent);
+        border-radius: 999px;
+        padding: space(3xs) space(2xs);
+    }
+    
+    &__meta {
+        margin-top: space(3xs);
+        font-size: font-size(sm);
+        color: color(text);
+        text-transform: uppercase;
+    }
+    
+    &__add-button {
+        width: 1.75rem;
+        height: 1.75rem;
+        border-radius: 0.35rem;
+        border: 1px solid rgb(255 255 255 / 25%);
+        background: color(btn-card);
+        color: color(text);
+        font-size: font-size(lg);
+        line-height: 1;
+        cursor: pointer;
+    }
+    
+
+    &--closed {
+        background: color(secondary);
+        border: 1px solid color(border);
+    }
+    
+    &--open {
+        background: color(bg-card);
+        border: 1px solid color(btn-card);
+    }
+}
+
+.counter {
+    margin-top: space(xs);
+    border: 1px solid rgb(255 255 255 / 15%);
+    border-radius: space(2xs);
+    padding: space(2xs);
+    background: rgba(6, 14, 25, 0.4);
+
+    &__header {
+        @include grid(2, $gap: space(2xs));
+        margin-bottom: space(2xs);
+    }
+    
+    &__label {
+        text-transform: uppercase;
+        font-size: font-size(sm);
+        text-align: center;
+        color: color(text);
+    }
+
+    &__values {
+        @include grid(2, $gap: space(2xs));
+        margin-bottom: 0.5rem;
+    }
+    
+    &__value {
+        background: #111;
+        border: 1px solid color(border);
+        border-radius: space(2xs);
+        text-align: center;
+        padding: space(2xs);
+        font-size: font-size(xl);
+        font-weight: 700;
+    }
+
+    &__actions {
+        @include grid(4, $gap: space(2xs));
+    }
+    
+    &__button {
+        border: 1px solid rgb(255 255 255 / 20%);
+        border-radius: space(xs);
+        padding: space(3xs);
+        background: color(btn-card);
+        color: color(text);
+        font-weight: 700;
+        cursor: pointer;
+    
+        &--muted {
+            background: color(secondary);
+            border-radius: space(xs);
+        }
+    }
+}
