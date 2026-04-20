@@ -1,13 +1,13 @@
 'use client';
 import { usePathname } from "next/navigation";
 import styles from "./index.module.scss";
-import { routes } from "@/constants/routes";
+import { navigationRoutes } from "@/constants/routes";
 import Link from "next/link";
 
 
 export function Header() {
     const pathName =  usePathname()
-    const currentPage = routes.find(rout => rout.route === pathName)
+    const currentPage = navigationRoutes.find(rout => rout.route === pathName)
     const isHome = pathName === '/'
 
     return (
