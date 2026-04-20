@@ -7,15 +7,18 @@ import { EstablishmentVisit } from "@/types"
 type ClientCardProps =  {
     visit: EstablishmentVisit,
     updateSales: (value: number) => void,
-    onClose: (id: string) => void
+    onClose: (id: string, visit: UpdateVisit) => void
     openCard: (id: string) => void
+    certificateValueWeek: number
 }
 
-export function ClientCard({visit, updateSales, onClose, openCard} : ClientCardProps){
+type UpdateVisit = Pick<EstablishmentVisit, 'sold' | 'returned' | 'commissionClient' | 'valueTotalPaidClient' | 'statusCard'>
+
+
+export function ClientCard({visit, updateSales, onClose, openCard, certificateValueWeek} : ClientCardProps){
     const isOpen = visit.statusCard === 'open'
     const [ certificatesSold, setCertificatesSold ] = useState(0)
-    const [ certificatesReturned, setCertificatesReturned ] = useState(0)
-
+    const certificatesReturned = visit.totalCertificates - certificatesSold
 
     return (
             <article 
@@ -25,7 +28,21 @@ export function ClientCard({visit, updateSales, onClose, openCard} : ClientCardP
                 <header className={styles['client-card__header']}>
                     <p className={styles['client-card__name']}>{visit.name}</p>
                     {isOpen 
-                        ? <button className={styles['client-card__add-button']} type="button" aria-label="Fechar visita" onClick={() => onClose(visit.id)}>+</button>
+                        ? <button 
+                            className={styles['client-card__add-button']} type="button" aria-label="Fechar visita" 
+                            onClick={() => onClose(
+                                visit.id,
+                                {
+                                    
+                                    commissionClient: certificatesSold * certificateValueWeek * 0.1,
+                                    returned: certificatesReturned,
+                                    sold: certificatesSold,
+                                    valueTotalPaidClient: certificatesSold * certificateValueWeek * 0.9,
+                                    statusCard: 'closed',
+                                    
+                                }
+                            )}
+                                >+</button>
                         : <span className={styles['client-card__badge']}>visitado</span>
                     }
                 </header>
