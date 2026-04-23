@@ -27,6 +27,7 @@ export function ClientCard({visit, updateSales, onClose, openCard, certificateVa
             >
                 <header className={styles['client-card__header']}>
                     <p className={styles['client-card__name']}>{visit.name}</p>
+                    <p className={styles['client-card__name']}>Total cartelas: {visit.totalCertificates}</p>
                     {isOpen 
                         ? <button 
                             className={styles['client-card__add-button']} type="button" aria-label="Fechar visita" 
@@ -56,18 +57,20 @@ export function ClientCard({visit, updateSales, onClose, openCard, certificateVa
                                 <header className={styles.counter__header}>
                                     <p className={styles.counter__label}>Vendidas</p>
                                     <p className={styles.counter__label}>Sobras</p>
+                                    <p className={styles.counter__label}>cobrar valor</p>
                                 </header>
 
                                 <div className={styles.counter__values}>
                                     <p className={styles.counter__value}>{certificatesSold}</p>
                                     <p className={styles.counter__value}>{certificatesReturned}</p>
+                                    <p className={styles.counter__value}>{certificatesSold * certificateValueWeek * 0.9}</p>
                                 </div>
 
                                 <div className={styles.counter__actions}>
-                                    <button className={styles.counter__button} type="button" onClick={() => setCertificatesSold((prev) => prev + 1)}>
+                                    <button className={styles.counter__button} type="button" onClick={() => setCertificatesSold((prev) => prev >= visit.totalCertificates ? visit.totalCertificates : prev + 1)}>
                                     +1
                                     </button>
-                                    <button className={styles.counter__button} type="button" onClick={() => setCertificatesSold((prev) => prev + 10)}>
+                                    <button className={styles.counter__button} type="button" onClick={() => setCertificatesSold((prev) =>prev >= visit.totalCertificates ? visit.totalCertificates : prev + 10)}>
                                     +10
                                     </button>
                                     <button className={styles['counter__button--muted']} type="button"  onClick={() => setCertificatesSold((prev) => prev > 0 ? prev -1 : 0)}>
