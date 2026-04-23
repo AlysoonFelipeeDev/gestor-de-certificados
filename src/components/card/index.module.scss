@@ -61,7 +61,7 @@
     background: rgba(6, 14, 25, 0.4);
 
     &__header {
-        @include grid(2, $gap: space(2xs));
+        @include grid(3, $gap: space(2xs));
         margin-bottom: space(2xs);
     }
     
@@ -73,7 +73,7 @@
     }
 
     &__values {
-        @include grid(2, $gap: space(2xs));
+        @include grid(3, $gap: space(2xs));
         margin-bottom: 0.5rem;
     }
     
@@ -89,7 +89,7 @@
 
     &__actions {
         @include grid(3, $gap: space(2xs));
-        width: 50%;
+        width: 30%;
     }
     
     &__button {
